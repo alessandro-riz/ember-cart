@@ -5,7 +5,7 @@ const {
 } = Ember;
 
 export function initialize(appInstance) {
-  let CartService = appInstance._lookupFactory('service:cart');
+  let CartService = appInstance.factoryFor('service:cart');
 
   let payload;
 

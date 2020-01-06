@@ -23,7 +23,7 @@ module('Unit | Instance Initializer | cart', {
   },
   afterEach() {
     window.localStorage.removeItem('cart');
-    let CartService = this.appInstance._lookupFactory('service:cart');
+    let CartService = this.appInstance.factoryFor('service:cart');
     CartService.reopen({
       localStorage: false
     });
@@ -50,7 +50,7 @@ test('does not instantiate cart with localStorage if flag is false', function(as
 test('does instantiate cart with localStorage if flag is true', function(assert) {
   window.localStorage.setItem('cart', JSON.stringify([{ name: 'Foo', price: 100, quantity: 1 }]));
 
-  let CartService = this.appInstance._lookupFactory('service:cart');
+  let CartService = this.appInstance.factoryFor('service:cart');
 
   CartService.reopen({
     localStorage: true
